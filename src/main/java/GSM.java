@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class GSM {
     private String model;
     private String manufacturer;
@@ -5,7 +7,9 @@ public class GSM {
     private String owner;
     private Battery battery;
     private  Display display;
-    public static GSM iphone4s =new GSM("Iphone4S","Apple");
+    private LinkedList<GSM> callHistory=new LinkedList<>();
+
+    public static GSM iphone4s =new GSM("Iphone4S","Apple",221.3,"Apple",new Battery("IPS4 56",23,8,BatteryType.LiIon),new Display((float)4.4,2));
 
     public GSM() {
         this.model = null;
@@ -36,6 +40,6 @@ public class GSM {
 
     @Override
     public String toString() {
-        return String.format("Model:%s\nManufacturer:%s\nPrice:%f\nOwner:%s\nBattery:%s\nDisplay:%s",model,manufacturer,price,owner,battery.toString(),display.toString());
+        return String.format("Model:%s\nManufacturer:%s\nPrice:%.2f$\nOwner:%s\nBattery:%s\nDisplay:%s",model,manufacturer,price,owner,battery.toString(),display.toString());
     }
 }

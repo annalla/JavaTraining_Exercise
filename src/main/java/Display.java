@@ -1,5 +1,5 @@
 public class Display {
-    private int size;
+    private float size;
     private int colors;
 
     public Display() {
@@ -7,13 +7,13 @@ public class Display {
         this.colors = 1;
     }
 
-    public Display(int size, int colors) {
+    public Display(float size, int colors) {
         this.size = size;
         this.colors = colors;
     }
 
     @Override
     public String toString() {
-        return String.format("size:%d\tnumber of colors:%d",size,colors);
+        return String.format("size:%.1f inches\t\tnumber of colors:%d",size,colors);
     }
 }
