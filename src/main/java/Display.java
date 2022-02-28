@@ -14,6 +14,9 @@ public class Display {
 
     @Override
     public String toString() {
-        return String.format("size:%.1f inches\t\tnumber of colors:%d",size,colors);
+        return "Display{" +
+                "size=" + size +
+                ", colors=" + colors +
+                '}';
     }
 }

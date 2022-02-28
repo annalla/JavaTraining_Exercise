@@ -1,4 +1,4 @@
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class GSM {
     private String model;
@@ -6,10 +6,10 @@ public class GSM {
     private double price;
     private String owner;
     private Battery battery;
-    private  Display display;
-    private LinkedList<GSM> callHistory=new LinkedList<>();
+    private Display display;
+    private ArrayList<Call> callHistory = new ArrayList<>();
 
-    public static GSM iphone4s =new GSM("Iphone4S","Apple",221.3,"Apple",new Battery("IPS4 56",23,8,BatteryType.LiIon),new Display((float)4.4,2));
+    public static GSM iphone4s = new GSM("Iphone4S", "Apple", 221.3, "Apple", new Battery("IPS4 56", 23, 8, BatteryType.LiIon), new Display((float) 4.4, 2));
 
     public GSM() {
         this.model = null;
@@ -40,6 +40,61 @@ public class GSM {
 
     @Override
     public String toString() {
-        return String.format("Model:%s\nManufacturer:%s\nPrice:%.2f$\nOwner:%s\nBattery:%s\nDisplay:%s",model,manufacturer,price,owner,battery.toString(),display.toString());
+        return "Gsm{" +
+                "model='" + model + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", price=" + price +
+                ", owner='" + owner + '\'' +
+                ", battery=" + battery +
+                ", display=" + display +
+                ", callHistory=" + callHistory +
+                '}';
+    }
+
+    public boolean addCall(Call call) {
+        if (call != null || callHistory.size() != 0) {
+            return callHistory.add(call);
+        }
+        return false;
+    }
+
+    public boolean deleteCall(int index) {
+        try {
+            callHistory.remove(index);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void clearCallHistory() {
+        if(callHistory.size()!=0){
+            callHistory.clear();
+            callHistory=new ArrayList<>();
+        }
+    }
+
+    public double calculateTotalCallsPrice(double pricePerMinute) {
+        double total = 0;
+        for (Call call : callHistory) {
+            total += (call.getDurations() / 60.0 * pricePerMinute);
+        }
+        return total;
+    }
+
+    public ArrayList<Call> getCallHistory() {
+        return callHistory;
+    }
+
+    public void removeLongestCallHistory() {
+        if (callHistory.size() != 0) {
+            int indexMax = 0;
+            for (int i = 1; i < callHistory.size(); i++) {
+                if (callHistory.get(i).getDurations() > callHistory.get(indexMax).getDurations()) {
+                    indexMax = i;
+                }
+            }
+            deleteCall(indexMax);
+        }
     }
 }
