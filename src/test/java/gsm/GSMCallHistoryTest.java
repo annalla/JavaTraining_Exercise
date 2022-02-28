@@ -1,6 +1,7 @@
+package gsm;
+
 import org.junit.Before;
 import org.junit.Test;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class GSMCallHistoryTest {
     Call call1=new Call(LocalDate.now(), LocalTime.now(),1,"0343431343");
     Call call2=new Call(LocalDate.now(), LocalTime.now(),3,"0986313433");
     Call call3=new Call(LocalDate.now(), LocalTime.now(),21,"0763445233");
-    Battery battery1 = new Battery("RBL A 091",24,10,BatteryType.LiIon);
+    Battery battery1 = new Battery("RBL A 091",24,10, BatteryType.LiIon);
     Display display1 = new Display((float) 9.2,2);
     GSM iphone11 = new GSM("IPHONE 11 PRO","Apple",1699.9,"Apple",battery1,display1);
     System.out.println("Init instance of GSM:\n"+iphone11);

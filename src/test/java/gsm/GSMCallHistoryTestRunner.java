@@ -1,11 +1,13 @@
+package gsm;
+
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
-public class GSMTestRunner {
+public class GSMCallHistoryTestRunner {
 
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(GSMTest.class);
+        Result result = JUnitCore.runClasses(GSMCallHistoryTest.class);
 
         for (Failure failure : result.getFailures()) {
             System.out.println(failure.toString());

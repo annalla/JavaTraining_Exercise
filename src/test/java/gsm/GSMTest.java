@@ -1,3 +1,9 @@
+package gsm;
+
+import gsm.Battery;
+import gsm.BatteryType;
+import gsm.Display;
+import gsm.GSM;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

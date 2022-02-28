@@ -1,3 +1,4 @@
+package gsm;
 public class Battery {
     private String model;
     private float hoursIdle;
@@ -46,3 +47,4 @@ public class Battery {
                 '}';
     }
 }
+

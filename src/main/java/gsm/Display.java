@@ -1,3 +1,5 @@
+package gsm;
+
 public class Display {
     private float size;
     private int colors;
@@ -20,3 +22,4 @@ public class Display {
                 '}';
     }
 }
+
