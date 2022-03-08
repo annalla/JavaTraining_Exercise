@@ -1,6 +1,8 @@
 package animal;
 
 public class Kitten extends Cat{
+    private final Enum type = AnimalType.KITTEN;
+
     public Kitten(int age, String name) {
         super(age, name, Gender.Female);
     }
@@ -12,9 +14,14 @@ public class Kitten extends Cat{
     @Override
     public String toString() {
         return "Kitten{" +
-                "age=" + age +
-                ", name='" + name + '\'' +
-                ", sex=" + sex +
+                "age=" + super.getAge() +
+                ", name='" + super.getName() + '\'' +
+                ", sex=" + super.getSex() +
                 '}';
+    }
+
+    @Override
+    public Enum getType() {
+        return type;
     }
 }

@@ -9,10 +9,9 @@ public class Call {
     private int durations;
     private String phoneNumber;
 
-    public Call(LocalDate date, LocalTime time, int durations, String phoneNumber) {
-
-        this.date = date;
-        this.time = time;
+    public Call(int durations, String phoneNumber) {
+        this.date = LocalDate.now();
+        this.time = LocalTime.now();
         this.durations = durations < 0 ? 0 : durations;
         this.phoneNumber = phoneNumber;
     }

@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class GSM {
-    private final String model;
-    private final String manufacturer;
-    private final double price;
-    private final String owner;
-    private final Battery battery;
-    private final Display display;
+    private String model;
+    private String manufacturer;
+    private double price;
+    private String owner;
+    private Battery battery;
+    private Display display;
     private ArrayList<Call> callHistory = new ArrayList<>();
 
     public static GSM iphone4s = new GSM("Iphone4S", "Apple", 221.3, "Apple", new Battery("IPS4 56", 23, 8, BatteryType.LiIon), new Display((float) 4.4, 2));
@@ -80,7 +80,7 @@ public class GSM {
     public double calculateTotalCallsPrice(double pricePerMinute) {
         double total = 0;
         for (Call call : callHistory) {
-            total += (call.getDurations() / 60.0 * pricePerMinute);
+            total += (call.getDurations() / 60 * pricePerMinute);
         }
         return total;
     }

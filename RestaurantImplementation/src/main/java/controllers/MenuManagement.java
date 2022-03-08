@@ -13,11 +13,15 @@ public class MenuManagement {
 
     private static final Logger logger = LogManager.getLogger(MenuManagement.class);
 
-    public static List<Menu> menuList;
+    private List<MenuItem> menuList;
     public static HashMap<MenuType, List<MenuType>> menu;
 
     public MenuManagement() {
         menuList = new ArrayList<>();
+    }
+
+    public List<MenuItem> getMenuList() {
+        return menuList;
     }
 
     public static void setUpMenu() {
@@ -49,18 +53,19 @@ public class MenuManagement {
 
         switch (type) {
             case AlcoholMenu:
-                menuList.add(new AlcoholMenu(name, des, img, price));
+                menuList.add(new AlcoholMenuItem(name, des, img, price));
                 break;
             case SoftDrinkMenu:
-                menuList.add(new SoftDrinkMenu(name, des, img, price));
+                menuList.add(new SoftDrinkMenuItem(name, des, img, price));
                 break;
             case LunchMenu:
-                menuList.add(new LunchMenu(name, des, img, price));
+                menuList.add(new LunchMenuItem(name, des, img, price));
                 break;
             case BreakfastMenu:
-                menuList.add(new BreakfastMenu(name, des, img, price));
+                menuList.add(new BreakfastMenuItem(name, des, img, price));
+                break;
             case DinnerMenu:
-                menuList.add(new DinnerMenu(name, des, img, price));
+                menuList.add(new DinnerMenuItem(name, des, img, price));
                 break;
         }
         return menuList.size() - 1;
@@ -72,7 +77,7 @@ public class MenuManagement {
      * @param index index of the menu
      * @return deleted Menu or null if index out of bound
      */
-    public Menu deleteMenu(int index) {
+    public MenuItem deleteMenu(int index) {
         try {
             return menuList.remove(index);
         } catch (RuntimeException e) {
@@ -86,10 +91,47 @@ public class MenuManagement {
      *
      * @param menu  instance of new menu
      * @param index index of menu need to update
+     * @return true if succeeded false if failed
      */
-    public boolean updateMenu(Menu menu, int index) {
+    public boolean updateMenu(MenuItem menu, int index) {
         try {
             menuList.get(index).updateMenu(menu);
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            logger.fatal("Update menu failed due to " + e);
+            return false;
+        }
+    }
+    public boolean updateMenuName(String name, int index) {
+        try {
+            menuList.get(index).setName(name);
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            logger.fatal("Update menu failed due to " + e);
+            return false;
+        }
+    }
+    public boolean updateMenuDescription(String description, int index) {
+        try {
+            menuList.get(index).setDescription(description);
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            logger.fatal("Update menu failed due to " + e);
+            return false;
+        }
+    }
+    public boolean updateMenuImage(String image, int index) {
+        try {
+            menuList.get(index).setImage(image);
+            return true;
+        } catch (IndexOutOfBoundsException e) {
+            logger.fatal("Update menu failed due to " + e);
+            return false;
+        }
+    }
+    public boolean updateMenuPrice(double price, int index) {
+        try {
+            menuList.get(index).setPrice(price);
             return true;
         } catch (IndexOutOfBoundsException e) {
             logger.fatal("Update menu failed due to " + e);
@@ -119,12 +161,41 @@ public class MenuManagement {
      * @param index of menu in menuList
      * @return Menu from index in menuList or null if index out of bound
      */
-    public Menu getMenu(int index) {
+    public MenuItem getMenu(int index) {
         try {
             return menuList.get(index);
         } catch (IndexOutOfBoundsException e) {
             logger.fatal("Get detailed Menu failed due to " + e);
             return null;
+        }
+
+    }
+
+    /**
+     * Get name of menu from index
+     * @param index index of menu in list
+     * @return string name
+     */
+    public String getMenuName(int index) {
+        try {
+            return menuList.get(index).getName();
+        } catch (IndexOutOfBoundsException e) {
+            logger.fatal("Get detailed Menu failed due to " + e);
+            return null;
+        }
+
+    }
+    /**
+     * Get price of menu from index
+     * @param index index of menu in list
+     * @return string name
+     */
+    public double getMenuPrice(int index) {
+        try {
+            return menuList.get(index).getPrice();
+        } catch (IndexOutOfBoundsException e) {
+            logger.fatal("Get detailed Menu failed due to " + e);
+            return -1;
         }
 
     }

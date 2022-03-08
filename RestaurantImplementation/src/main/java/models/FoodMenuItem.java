@@ -1,13 +1,20 @@
 package models;
 
-public class BreakfastMenu extends FoodMenu {
-    public BreakfastMenu(String name, String description, String image, double price) {
+public abstract class FoodMenuItem extends MenuItem {
+    protected final MenuType menuType=MenuType.FoodMenu;
+
+    public FoodMenuItem(String name, String description, String image, double price) {
         super(name, description, image, price);
     }
 
     @Override
+    public MenuType getMenuType() {
+        return menuType;
+    }
+
+    @Override
     public String toString() {
-        return "BreakfastMenu{" +
+        return "FoodMenu{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", image='" + image + '\'' +

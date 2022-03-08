@@ -1,7 +1,7 @@
 package controllers;
 
 import models.Bill;
-import models.Menu;
+import models.MenuItem;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,12 +18,12 @@ public class BillManagement {
         bills = new ArrayList<>();
     }
 
-    public int addBill(HashMap<Menu, Integer> menuItems) {
+    public int addBill(HashMap<MenuItem, Integer> menuItems) {
         bills.add(new Bill(menuItems));
         return bills.size() - 1;
     }
 
-    public void addMenuItemIntoBill(Menu menu, int quantity, int index) {
+    public void addMenuItemIntoBill(MenuItem menu, int quantity, int index) {
         try {
             bills.get(index).addMenuItem(menu, quantity);
 
@@ -47,7 +47,7 @@ public class BillManagement {
         }
     }
 
-    public boolean updateBillByDeleteItem(Menu menu, int index) {
+    public boolean updateBillByDeleteItem(MenuItem menu, int index) {
         try {
             bills.get(index).deleteMenuItem(menu);
             return true;
@@ -57,7 +57,7 @@ public class BillManagement {
         }
     }
 
-    public boolean updateBillByUpdateItem(Menu menu, int quantity, int index) {
+    public boolean updateBillByUpdateItem(MenuItem menu, int quantity, int index) {
         try {
             bills.get(index).updateMenuItem(menu, quantity);
             return true;

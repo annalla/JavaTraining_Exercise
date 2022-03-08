@@ -2,11 +2,10 @@ package models;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.Timer;
 
 public class Bill {
 
-    private HashMap<Menu, Integer> menuItems;
+    private HashMap<MenuItem, Integer> menuItems;
     private LocalDateTime orderedTime;
 
     public Bill() {
@@ -22,11 +21,11 @@ public class Bill {
                 '}';
     }
 
-    public Bill(HashMap<Menu, Integer> menuItems) {
+    public Bill(HashMap<MenuItem, Integer> menuItems) {
         this.menuItems = menuItems;
     }
 
-    public void addMenuItem(Menu menuType, int quantity) {
+    public void addMenuItem(MenuItem menuType, int quantity) {
         if (menuItems.containsKey(menuType)) {
             menuItems.replace(menuType, menuItems.get(menuType) + quantity);
         } else {
@@ -34,13 +33,13 @@ public class Bill {
         }
         this.orderedTime=LocalDateTime.now();
     }
-    public void deleteMenuItem(Menu menuType){
+    public void deleteMenuItem(MenuItem menuType){
         if (menuItems.containsKey(menuType)) {
             menuItems.remove(menuType);
             this.orderedTime=LocalDateTime.now();
         }
     }
-    public void updateMenuItem(Menu menu,int quantity){
+    public void updateMenuItem(MenuItem menu, int quantity){
         if (menuItems.containsKey(menu)) {
             menuItems.replace(menu, quantity);
         } else {

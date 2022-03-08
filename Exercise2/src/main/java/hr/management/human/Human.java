@@ -3,8 +3,8 @@ package hr.management.human;
 import java.util.Objects;
 
 public abstract class Human {
-    protected String firstName;
-    protected String lastName;
+    private String firstName;
+    private String lastName;
 
     public Human(String firstName, String lastName) {
         this.firstName = Objects.requireNonNullElse(firstName, "");

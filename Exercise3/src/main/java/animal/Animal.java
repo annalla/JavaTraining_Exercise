@@ -1,14 +1,27 @@
 package animal;
 
 public abstract class Animal implements ISound {
-    protected int age;
-    protected String name;
-    protected Gender sex;
+    private Enum type ;
+    private int age;
+    private String name;
+    private Gender sex;
 
     public Animal(int age, String name, Gender sex) {
         this.age = age < 0 ? 0 : age;
         this.name = name;
         this.sex = sex;
+    }
+
+    public Enum getType() {
+        return type;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Gender getSex() {
+        return sex;
     }
 
     public int getAge() {

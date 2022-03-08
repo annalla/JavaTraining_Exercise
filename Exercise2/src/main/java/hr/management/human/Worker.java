@@ -1,8 +1,8 @@
 package hr.management.human;
 
 public class Worker extends Human {
-    double weekSalary;
-    double workHoursPerDay;
+    private double weekSalary;
+    private double workHoursPerDay;
 
     public Worker(String firstName, String lastName, double weekSalary, double workHoursPerDay) {
         super(firstName, lastName);
@@ -18,8 +18,8 @@ public class Worker extends Human {
     @Override
     public String toString() {
         return "Worker{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "firstName='" + super.getFirstName() + '\'' +
+                ", lastName='" + super.getLastName() + '\'' +
                 ", weekSalary=" + weekSalary +
                 ", workHoursPerDay=" + workHoursPerDay +
                 '}';

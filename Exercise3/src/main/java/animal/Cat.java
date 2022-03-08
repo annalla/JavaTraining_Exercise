@@ -1,6 +1,7 @@
 package animal;
 
 public class Cat extends Animal {
+    private final  Enum type = AnimalType.CAT;
     protected final String sound = "Meow";
 
     public Cat(int age, String name, Gender sex) {
@@ -8,11 +9,16 @@ public class Cat extends Animal {
     }
 
     @Override
+    public Enum getType() {
+        return type;
+    }
+
+    @Override
     public String toString() {
         return "Cat{" +
-                "age=" + age +
-                ", name='" + name + '\'' +
-                ", sex=" + sex +
+                "age=" + super.getAge() +
+                ", name='" + super.getName() + '\'' +
+                ", sex=" + super.getSex() +
                 '}';
     }
 
